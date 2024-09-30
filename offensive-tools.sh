@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Author: Joel Russo - jolick
+# Original Author: Joel Russo - jolick
+# Updated by: Ed Nevard - Edned0
 
 ##### settings
 #--- Note: Most of the tools that will be git clone will be placed in the directory "$outdir", in exception to wordlists which will be placed in /usr/share/wordlists and pratical tools like impacket, webshells which will be placed in $optdir
@@ -85,10 +86,10 @@ function checkInternet () {
 ##### Add parrot repository
 function addTools () {
     file="/etc/apt/sources.list.d/parrot.list"
-    echo "deb https://deb.parrotlinux.org/parrot/ rolling main contrib non-free" > ${file}
-    echo "#deb-src https://deb.parrotlinux.org/parrot/ rolling main contrib non-free" >> ${file}
-    echo "deb https://deb.parrotlinux.org/parrot/ rolling-security main contrib non-free" >> ${file}
-    echo "#deb-src https://deb.parrotlinux.org/parrot/ rolling-security main contrib non-free" >> ${file}
+    echo "deb https://deb.parrot.sh/parrot lory main contrib non-free non-free-firmware" > ${file}
+    echo "#deb-src https://deb.parrot.sh/parrot lory main contrib non-free non-free-firmware" >> ${file}
+    echo "deb https://deb.parrot.sh/parrot lory-security main contrib non-free non-free-firmware" >> ${file}
+    echo "#deb-src https://deb.parrot.sh/parrot lory-security main contrib non-free non-free-firmware" >> ${file}
     #--- Add key
     echo -e "\n\n ${GREEN}[+]${RESET} Installing ${GREEN}Parrot gpg and keyring${RESET}"
     wget -qO - http://archive.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -
