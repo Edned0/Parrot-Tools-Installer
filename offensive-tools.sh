@@ -92,7 +92,8 @@ function addTools () {
     echo "#deb-src https://deb.parrot.sh/parrot lory-security main contrib non-free non-free-firmware" >> ${file}
     #--- Add key
     echo -e "\n\n ${GREEN}[+]${RESET} Installing ${GREEN}Parrot gpg and keyring${RESET}"
-    wget -qO - http://archive.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -
+    # Remove deprecated apt-key function -- 'wget -qO - http://archive.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -'
+    wget -qO /etc/apt/trusted.gpg.d/parrot.gpg https://deb.parrot.sh/parrot/misc/parrotsec.gpg
     apt-get -y -qq update
     apt-get -y -qq install apt-parrot parrot-archive-keyring --no-install-recommends
 }
